@@ -92,7 +92,7 @@ public class PostController {
 
     @DeleteMapping(path = "/{id}")
     public OperationStatusModel deletePost(@PathVariable String id) {
-        LOGGER.info("Post controller - deletePost (DeleteMapping): /posts/{id}");
+        LOGGER.info("Post controller - deletePost (DeleteMapping): /posts/{id} ");
         // Logged user
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDto user = userService.getUser(authentication.getPrincipal().toString());
