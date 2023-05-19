@@ -2,7 +2,7 @@ import { LOGIN_ENDPOINT } from "../helpers/endpoints";
 import { SET_CURRENT_USER } from "./types";
 import setAuthToken from "../helpers/setAuthToken";
 import axios from "axios";
-import jwtDecode from "jwt-decode";
+import jwt_decode from "jwt-decode";
 
 export const loginUser = (userData) => dispatch => {
     return new Promise((resolve, reject) => {
@@ -16,17 +16,23 @@ export const loginUser = (userData) => dispatch => {
             const { authorization, userId } = response.headers;
             localStorage.setItem("jwtToken", authorization);
 
-            // Functionto add axios token
+            // Function to add axios token
             setAuthToken(authorization)
 
             // Decode token from clien side
-            const decode = jwtDecode(authorization);
-            dispatch(setAuthToken({ user: decode, loggedIn: true }));
+            const decode = jwt_decode(authorization);
+            dispatch(setCurrentUser({ user: decode, loggedIn: true }));
 
             resolve(response);
         }).catch(error => {
             reject(error);
         })
     })
+}
 
+export const setCurrentUser = ({ user, loggedIn }) => {
+    return {
+        type: SET_CURRENT_USER,
+        payload: { user, loggedIn }
+    }
 }
