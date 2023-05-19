@@ -38,8 +38,7 @@ public class WebSecurity {
         authenticationManagerBuilder.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
         // Get AuthenticationManager
         AuthenticationManager authenticationManager = authenticationManagerBuilder.build();
-        http
-                .cors().and().csrf().disable()
+        http.cors().and().csrf().disable()
                 .authorizeHttpRequests()
                 .antMatchers(HttpMethod.POST, "/users").permitAll()
                 .antMatchers(HttpMethod.GET, "/posts/last", "/posts/{id}").permitAll()

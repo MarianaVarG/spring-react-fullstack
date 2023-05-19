@@ -56,6 +56,8 @@ public class AuthenticationFilter extends UsernamePasswordAuthenticationFilter {
         // Create an interface method for the header
         UserDto userDto = userService.getUser(username);
 
+        // Let know we are going to have other headers
+        response.addHeader("Access-Control-Expose-headers", "Authorization, userId");
         response.addHeader("UserId", userDto.getUserId());
         response.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
         LOGGER.info("AuthenticationFilter - successfulAuthentication" + response);
