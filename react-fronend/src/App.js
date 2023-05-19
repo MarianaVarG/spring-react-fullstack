@@ -9,7 +9,9 @@ import { Provider } from "react-redux";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/Posts";
 import store from "./store";
+import checkForToken from "./helpers/checkForToken";
 
+checkForToken();
 
 function App() {
   return (
