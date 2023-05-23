@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import validator from 'validator';
 
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Alert } from 'react-bootstrap';
 import SignInForm from '../components/forms/SingInForm';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -48,7 +48,8 @@ export default function SignIn() {
 
     })
     .catch(err =>{
-
+      // Error messages when user is not logged
+      setErrors({ auth: "Cannot log in with these credentials" });
     });
   }
 
@@ -60,6 +61,8 @@ export default function SignIn() {
         <Col sm='12' md={{span: 8, offset: 2}} lg={{span: 6, offset: 3}}>
           <Card className='shadow'>
             <Card.Body>
+              {errors.auth && <Alert variant='danger'>{ errors.auth }</Alert>}
+
               <h3 className='fw-bold mb-2 text-uppercase'>Login</h3>
               <hr></hr>
 

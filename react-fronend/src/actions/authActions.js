@@ -11,8 +11,6 @@ export const loginUser = (userData) => dispatch => {
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
         }).then(response => {
             // Petitions is resolved
-            console.log(response);
-
             const { authorization, userId } = response.headers;
             localStorage.setItem("jwtToken", authorization);
 
