@@ -1,4 +1,4 @@
-import { LOGIN_ENDPOINT } from "../helpers/endpoints";
+import { LOGIN_ENDPOINT, REGISTER_ENDPOINT } from "../helpers/endpoints";
 import { SET_CURRENT_USER } from "./types";
 import setAuthToken from "../helpers/setAuthToken";
 import axios from "axios";
@@ -44,4 +44,18 @@ export const logoutUser = () => dispatch => {
         user: {},
         loggedIn: false
     }));
+}
+
+export const registerUser = (userData) => dispatch => {
+    return new Promise((resolve, reject) => {
+        //Post request = (endpoint, data, headers)
+        axios.post(REGISTER_ENDPOINT, userData, {
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' }
+        }).then(response => {
+            // Petitions is resolved
+            resolve(response);
+        }).catch(error => {
+            reject(error);
+        })
+    })
 }

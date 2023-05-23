@@ -12,6 +12,7 @@ import store from "./store";
 import checkForToken from "./helpers/checkForToken";
 import PrivateRoute from "./utils/PrivateRoute";
 import UserPosts from "./pages/UserPosts";
+import SignUp from "./pages/SingUp";
 
 checkForToken();
 
@@ -25,6 +26,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />} />
             <Route exact path="/signin" element={<SignIn />} />
+            <Route exact path="/signup" element={<SignUp />} />
             <Route exact path="/posts" element={<PrivateRoute > <UserPosts /> </PrivateRoute>} />
           </Routes>
         </Container>

@@ -13,9 +13,9 @@ export default function NavbarAnonymous() {
                 <Navbar.Collapse id="main-menu">
 
                     <Nav className="justify-content-end">
-                        <Nav.Link >Sing Up</Nav.Link>
+                        <Nav.Link as={NavLink} to={"/signup"}> Sing Up </Nav.Link>
 
-                        <Nav.Link as={NavLink} to={"/SignIn"}> Login </Nav.Link>
+                        <Nav.Link as={NavLink} to={"/signin"}> Login </Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
             </Container>
