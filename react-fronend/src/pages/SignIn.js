@@ -4,8 +4,9 @@ import validator from 'validator';
 import { Container, Row, Col, Card } from 'react-bootstrap';
 import SignInForm from '../components/forms/SingInForm';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { isObjectEmpty } from '../helpers/helpers'
+import { useDispatch, useSelector } from 'react-redux';
+import { isObjectEmpty } from '../helpers/helpers';
+import { useNavigate } from 'react-router-dom';
 
 import { loginUser } from '../actions/authActions';
 
@@ -13,8 +14,18 @@ export default function SignIn() {
   const [errors, setErrors] = useState({}) // Empty object
   const dispatch = useDispatch();
 
+  /* Getting the state 
+  state.auth because we call auth the reducer in the index
+  */
+  const loggedIn = useSelector(state => state.auth.loggedIn)
+  const navigate = useNavigate();
+
   useEffect(() =>{
     // Mount de component
+    if (loggedIn) {
+      // Redirect to main page
+      navigate("/");
+    }
   });
 
   const login = ({email, password}) => {
