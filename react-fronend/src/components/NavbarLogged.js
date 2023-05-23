@@ -3,6 +3,7 @@ import { Container, Nav, NavDropdown, Navbar } from "react-bootstrap";
 
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../actions/authActions";
+import { NavLink } from "react-router-dom";
 
 export default function NavbarLogged() {
     const user = useSelector((state) => state.auth.user);
@@ -20,7 +21,7 @@ export default function NavbarLogged() {
 
                     <Nav className="justify-content-end">
                         <NavDropdown title={user.sub} id="menu-dropdown">
-                            <NavDropdown.Item>Posts</NavDropdown.Item>
+                            <NavDropdown.Item as={NavLink} to={"/posts"}>Posts</NavDropdown.Item>
                             <NavDropdown.Item onClick={() => dispatch(logoutUser())} >Logout</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
