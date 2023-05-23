@@ -5,13 +5,13 @@ import java.util.Date;
 public class ErrorMessage {
     private Date timeStamp;
 
-    private String massage;
+    private String message;
 
     public ErrorMessage() {}
 
-    public ErrorMessage(Date timeStamp, String massage) {
+    public ErrorMessage(Date timeStamp, String message) {
         this.timeStamp = timeStamp;
-        this.massage = massage;
+        this.message = message;
     }
 
     public Date getTimeStamp() {
@@ -22,11 +22,11 @@ public class ErrorMessage {
         this.timeStamp = timeStamp;
     }
 
-    public String getMassage() {
-        return massage;
+    public String getMessage() {
+        return message;
     }
 
-    public void setMassage(String massage) {
-        this.massage = massage;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
